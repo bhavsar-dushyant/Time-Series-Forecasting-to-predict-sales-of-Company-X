@@ -84,4 +84,15 @@ ts.plot(Vec2, col=c("blue", "red"), main="CompanyX: Actual vs Forecast")
 MAPE <- mean(abs(Vec2[,1]-Vec2[,2])/Vec2[,1])
 MAPE
 
-###########################################
+# Detred Data #
+
+BY1 <- lag(BY, k=-1)
+df1 <- diff(BY, order=1)
+cbind(BY, BY1, diff(BY, order=1))
+
+####################
+# Test for Stationarity
+library(tseries)
+adf.test(na.omit(CompX.mult$random))
+
+######################
